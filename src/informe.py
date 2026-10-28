@@ -22,7 +22,24 @@ def seccion_resumo(alumnado):
     A media leva dous decimais: f"Media: {valor:.2f}"
     Une as liñas con "\\n".join(lista_de_linas)
     """
-    raise NotImplementedError
+    
+    notas = [alumno["nota"] for alumno in alumnado]
+    total_alumnos = len(alumnado)
+    media_notas = media(notas)
+    nota_max = nota_maxima(notas)
+    nota_min = nota_minima(notas)
+    aprobados = contar_aprobados(notas)
+
+    resumen = [
+        f"Alumnado: {total_alumnos}",
+        f"Media: {media_notas:.2f}",
+        f"Nota máxima: {nota_max}",
+        f"Nota mínima: {nota_min}",
+        f"Aprobados: {aprobados}"
+    ]
+
+    return "\n".join(resumen)
+    
 
 
 def seccion_listado(alumnado):
@@ -46,6 +63,7 @@ def seccion_listado(alumnado):
 def informe_completo(alumnado):
     """Xunta todas as seccións do informe."""
     partes = ["=== INFORME DE NOTAS ==="]
-    # FASE 2: cada persoa engade AQUÍ a chamada á súa sección, por exemplo:
+    # FASE 2: cada persoa engade AQUÍ a chamada á súa sección
+    partes.append(seccion_resumo(alumnado))
     partes.append(seccion_listado(alumnado))
     return "\n\n".join(partes)
