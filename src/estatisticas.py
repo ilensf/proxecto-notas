@@ -10,7 +10,9 @@ def media(notas):
 
     media([4, 6, 8]) -> 6
     """
-    raise NotImplementedError
+    if not notas:
+        return 0
+    return sum(notas) / len(notas)
 
 
 def nota_maxima(notas):
@@ -18,7 +20,7 @@ def nota_maxima(notas):
 
     nota_maxima([3, 9, 5]) -> 9
     """
-    raise NotImplementedError
+    return max(notas)
 
 
 def nota_minima(notas):
@@ -26,4 +28,4 @@ def nota_minima(notas):
 
     nota_minima([3, 9, 5]) -> 3
     """
-    raise NotImplementedError
+    return min(notas)
